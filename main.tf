@@ -35,11 +35,4 @@ resource "aws_s3_bucket_acl" "tfstate" {
   acl    = "private"
 }
 
-terraform {
-  backend "s3" {
-    bucket = "evself"
-    key    = "lambda-api"
-    region = "us-west-1"
-  }
- }
 
