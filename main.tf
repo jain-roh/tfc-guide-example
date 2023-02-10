@@ -25,4 +25,12 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name = var.instance_name
   }
+
+}
+terraform {
+  backend "s3" {
+    bucket = "evself"
+    key    = "/"
+    region = "us-west-1"
+  }
 }
