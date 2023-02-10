@@ -27,17 +27,10 @@ resource "aws_instance" "ubuntu" {
   }
 
 }
-resource "aws_s3_bucket" "tfstate" {
-  bucket = "evself"
-}
-resource "aws_s3_bucket_acl" "tfstate" {
-  bucket = aws_s3_bucket.tfstate.id
-  acl    = "private"
-}
 
 terraform{
   backend "s3" {
-      bucket = "evself"
+      bucket = "evself1"
       key    = "lambda-api"
       region = "us-west-1"
    }
