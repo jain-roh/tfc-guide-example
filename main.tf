@@ -27,10 +27,24 @@ resource "aws_instance" "ubuntu" {
   }
 
 }
+resource "aws_s3_bucket" "tfstate" {
+  bucket        = "cloudservices-terraform-state-jain-roh"
+}
+resource "aws_s3_bucket_acl" "tfstate" {
+  bucket = aws_s3_bucket.tfstate.id
+  acl    = "private"
+}
+
 terraform {
+   required_providers {
+     aws = {
+       source = "hashicorp/aws"
+     }
+   }
   backend "s3" {
-    bucket = "evself"
-    key    = "/"
+    bucket = "blog-cloudservices-terraform-state"
+    key    = "lambda-api"
     region = "us-west-1"
   }
-}
+ }
+
